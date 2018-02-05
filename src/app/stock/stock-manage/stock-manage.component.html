@@ -1,7 +1,7 @@
 <div class="box">
   <div class="box-header with-border">
     <h3 class="box-title">
-      <a class="btn btn-success btn-sm"><span class="glyphicon glyphicon-plus"></span>创建</a></h3>
+      <a class="btn btn-success btn-sm" (click)="Create()"><span class="glyphicon glyphicon-plus"></span>创建</a></h3>
     <div class="box-tools">
       <div class="input-group input-group-sm" style="width: 150px;margin-top:5px;">
         <input type="text" name="table_search" class="form-control pull-right" placeholder="股票名称">
@@ -26,9 +26,9 @@
         <td>{{i+1}}</td>
         <td>{{stock.name}}</td>
         <td>{{stock.price}}</td>
-        <td><app-stars></app-stars></td>
+        <td><app-stars [rating]="stock.rating"></app-stars></td>
         <td>
-          <a class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-pencil"></span>修改</a>
+          <a class="btn btn-warning btn-xs" (click)="Update(stock)"><span class="glyphicon glyphicon-pencil"></span>修改</a>
           <a class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span>删除</a>
         </td>
       </tr>
