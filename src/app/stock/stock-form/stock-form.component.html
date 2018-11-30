@@ -1,1 +1,83 @@
-{{stock.name}}
+<div class="box box-info">
+  <form class="form-horizontal">
+    <div class="box-body">
+      <div class="form-group">
+        <label for="name" class="col-sm-2 control-label">股票名称:</label>
+
+        <div class="col-sm-6">
+          <input
+            type="text"
+            value="{{stock.name}}"
+            name="name"
+            class="form-control"
+            placeholder="股票名称"
+          />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="price" class="col-sm-2 control-label">股票价格:</label>
+
+        <div class="col-sm-6">
+          <input
+            type="number"
+            value="{{stock.price}}"
+            name="price"
+            class="form-control"
+            placeholder="股票价格"
+          />
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">股票评级:</label>
+
+        <div class="col-sm-6"><app-stars [readonly]="false" [(rating)]="stock.rating"></app-stars></div>
+      </div>
+      <div class="form-group">
+        <label for="desc" class="col-sm-2 control-label">股票描述:</label>
+
+        <div class="col-sm-6">
+          <input
+            type="textarea"
+            value="{{stock.desc}}"
+            name="desc"
+            class="form-control"
+            placeholder="股票描述"
+          />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="categories" class="col-sm-2 control-label">股票类型:</label>
+
+        <div class="col-sm-6">
+          <div class="row">
+            <div class="col-sm-4 checkbox">
+                <label>
+                    <input type="checkbox"> IT
+                  </label>
+            </div>
+            <div class="col-sm-4 checkbox">
+                <label>
+                    <input type="checkbox"> 金融
+                  </label>
+            </div>
+            <div class="col-sm-4 checkbox">
+                <label>
+                    <input type="checkbox"> 互联网
+                  </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.box-body -->
+    <div class="box-footer">
+      <button type="submit" class="btn btn-default" (click)="Cancel()">
+        取消
+      </button>
+      <button type="submit" class="btn btn-info pull-right" (click)="Submit()">
+        提交
+      </button>
+    </div>
+    <!-- /.box-footer -->
+  </form>
+</div>

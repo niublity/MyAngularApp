@@ -1,21 +1,33 @@
-import {Component, OnInit} from '@angular/core';
-import {Stock} from "../stock-manage/stock-manage.component";
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute, Router } from "@angular/router";
+import { Stock, StockService } from "../stock.service";
 
 @Component({
-  selector: 'app-stock-form',
-  templateUrl: './stock-form.component.html',
-  styleUrls: ['./stock-form.component.css']
+  selector: "app-stock-form",
+  templateUrl: "./stock-form.component.html",
+  styleUrls: ["./stock-form.component.css"]
 })
 export class StockFormComponent implements OnInit {
-
-
+  private stockID: number;
   stock: Stock;
 
-  constructor() {
+  constructor(private activeRoute: ActivatedRoute,private stockService:StockService
+    ,private router:Router) {
+
   }
 
   ngOnInit() {
-    this.stock = new Stock(1, "第一只股票", 1.99, 3.5, "这是第一只股票，是我在学习慕课网Angular入门实战时创建的", ["IT", "互联网"]);
+    this.stockID = this.activeRoute.snapshot.params["id"];
+    this.stock = this.stockService.getStock(this.stockID);
   }
 
+
+  Cancel():void{
+    this.router.navigateByUrl("/stock")
+  }
+
+  Submit(): any {
+    console.log(this.stock.rating);
+    this.router.navigateByUrl("/stock")
+  }
 }
